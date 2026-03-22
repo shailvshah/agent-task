@@ -1,0 +1,73 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve agent.task
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this! Please search existing issues first before submitting.
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: When I run task validate, it incorrectly flags my valid accept array...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: What commands did you run? Please provide the exact `.agent.task` file contents if possible.
+      placeholder: |
+        1. Create a contract with...
+        2. Run `task validate my-task.agent.task`
+        3. See error...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: implementation
+    attributes:
+      label: Which implementation are you using?
+      options:
+        - TypeScript CLI (npm / npx)
+        - Python CLI (pip / uvx)
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: agent.task version
+      description: What version of the CLI or SDK are you using?
+      placeholder: "e.g., 0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Info
+      description: Mention your OS, Node version, or Python version as applicable.
+      placeholder: "macOS 14, Node 20.x, uv 0.1.x"
+      
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I have checked the issue tracker for the same bug.
+          required: true
