@@ -129,17 +129,24 @@ task result task.result.json           # display result summary
 
 `agent.task` is proposed as the fourth primitive in the [Agentic AI Foundation](https://aaif.io) stack alongside MCP, A2A, and AGENTS.md. See [RFC-0001](./RFC-0001-agent-task.md).
 
+## The Vision: Universal Execution
+
+Per [ADR-0004](./docs/adr/ADR-0004-universal-execution.md), `agent.task` serves a 3-phase strategic vision:
+1. **Enterprise Readiness:** Providing strict, verifiable validation boundaries and token/cost budgets.
+2. **Standardization for Discovery:** Using `capabilities_required` for agent registries to route tasks dynamically.
+3. **Universal Execution:** Assuring that `agent.task` adapters natively expose **generic plug-and-play hooks** (`BaseTaskAdapter`) instead of forcing developers into highly-restrictive execution graph wrappers.
+
 ## Status
 
 🚧 **Pre-release — v0.1.0 in active development**
 
 - [x] Spec v0.1 (this repo)
-- [x] JSON Schema
-- [x] 4 enterprise example contracts
+- [x] Extensible Pydantic Schema Validator
+- [x] Core Python CLI (Typer, Rich)
+- [x] Universal `BaseTaskAdapter` Core Interface
+- [x] LangGraph Adapter natively hooked (`adapter-langgraph-py`)
 - [ ] TypeScript CLI + validator
-- [ ] Python CLI + validator
-- [ ] LangGraph adapter
-- [ ] CrewAI adapter
+- [ ] CrewAI / Agno adapters
 - [ ] AAIF RFC submission
 
 ## Contributing
