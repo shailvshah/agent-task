@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict, Field
-from typing import List, Literal, Optional, Union, Any
+from typing import List, Literal, Optional, Union
 
 class GoalDict(BaseModel):
     model_config = ConfigDict(populate_by_name=True, extra="allow")

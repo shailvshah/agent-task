@@ -82,11 +82,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g ajv-cli
-      - run: ajv validate -s spec/v0.1.json -d spec/v0.1.json
+      - run: npm install -g ajv-cli ajv-formats
+      - run: ajv compile -s spec/v0.1.json -c ajv-formats
       - name: Validate all examples
         run: |
           for f in examples/*.agent.task; do
             echo "Validating $f"
-            ajv validate -s spec/v0.1.json -d "$f"
+            cp "$f" "$f.json"
+            ajv validate -s spec/v0.1.json -d "$f.json" -c ajv-formats
+            rm "$f.json"
           done
