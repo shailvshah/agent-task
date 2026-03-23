@@ -63,7 +63,7 @@ jobs:
           for fixture in tests/fixtures/valid/*.agent.task; do
             echo "Testing: $fixture"
             ts_out=$(node packages/cli-ts/dist/cli/index.js validate "$fixture" --json)
-            py_out=$(uv run --directory packages/cli-py agent-task validate "$fixture" --json)
+            py_out=$(packages/cli-py/.venv/bin/agent-task validate "$fixture" --json)
             if [ "$ts_out" != "$py_out" ]; then
               echo "DIVERGENCE on $fixture"
               echo "TS: $ts_out"

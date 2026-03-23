@@ -37,9 +37,8 @@ def validate(file: str, is_json: bool = typer.Option(False, "--json")) -> None:
         task = AgentTask.model_validate(data)
         
         if is_json:
-            # Produce byte-identical structured output
-            out_dict = task.model_dump(by_alias=True, exclude_none=True)
-            print(json.dumps(out_dict, sort_keys=True))
+            # Produce byte-identical structured output to match TypeScript CLI
+            print(json.dumps({"status": "valid", "file": file}, separators=(',', ':')))
         else:
             rprint(f"[bold green]✓ Validated[/bold green] {file} [dim](Task ID: {task.meta.id})[/dim]")
             
