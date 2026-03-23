@@ -22,6 +22,13 @@ Any new schema key, modified validation rule, or deprecated field MUST be propos
 - Use `docs/adr/ADR-0000-template.md` to scaffold a new ADR.
 - Place it in `docs/adr/`.
 
+### 3. Extensible Schemas (Pydantic / Typer)
+The Python CLI relies on `Typer` and `Rich`. The Pydantic models in `agent_task.models` MUST retain `extra="allow"` ConfigDicts so frameworks can inject custom hyperparameters (e.g. `time_limit_sec`) without crashing the parser. `GoalType` MUST remain a `Union` so developers can casually pass strings.
+
+### 4. Universal Adapter Interface
+When adding new orchestrator support (LangGraph, CrewAI, Agno), you MUST implement the `BaseTaskAdapter` interface defined in `cli-py`.
+Adapters act strictly as a toolkit (providing context injection, telemetry callbacks, and evaluation) and MUST NEVER wrap or dictate the user's execution graph.
+
 ## Developer Workflows (.claude)
 This repository uses Claude Code developer commands (in `.claude/commands/`) to orchestrate complex maintenance tasks:
 - `/test-equivalence` (Tests matching outputs between Python and TS)

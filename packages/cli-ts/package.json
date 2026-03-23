@@ -1,0 +1,22 @@
+{
+  "name": "@agent-task/cli",
+  "version": "0.1.0",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "task": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linting needed right now'",
+    "test": "echo 'No tests needed right now'"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

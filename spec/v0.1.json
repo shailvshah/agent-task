@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agent-task.io/spec/v0.1.json",
+  "title": "agent.task v0.1",
+  "description": "JSON Schema for the agent.task specification v0.1",
+  "type": "object",
+  "properties": {
+    "goal": {
+      "type": "string",
+      "description": "Outcome description and explicit exclusions"
+    },
+    "accept": {
+      "type": "array",
+      "description": "Array of verifiable criteria",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["assertion", "state", "rubric"]
+          },
+          "check": {
+            "type": "string",
+            "description": "Deterministic expression for assertion or state"
+          },
+          "threshold": {
+            "type": "number",
+            "description": "Threshold for rubric evaluation"
+          }
+        },
+        "required": ["type"]
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "author": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "author", "timestamp"]
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "never": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "tokens": { "type": "integer" },
+        "cost_usd": { "type": "number" },
+        "time_limit_sec": { "type": "integer" }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "properties": {
+        "steps": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["goal", "accept", "meta"],
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+[project]
+name = "adapter-langgraph-py"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Shail Shah", email = "18045407+shailvshah@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "agent-task",
+    "langchain-core>=0.1.0",
+    "langgraph>=0.0.10",
+    "pydantic>=2.12.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+agent-task = { path = "../cli-py" }
