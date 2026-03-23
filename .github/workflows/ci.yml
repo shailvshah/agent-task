@@ -57,7 +57,7 @@ jobs:
       - uses: astral-sh/setup-uv@v3
       - run: npm ci --prefix packages/cli-ts
       - run: npm run build --prefix packages/cli-ts
-      - run: uv sync --prefix packages/cli-py
+      - run: cd packages/cli-py && uv sync
       - name: Run equivalence tests
         run: |
           for fixture in tests/fixtures/valid/*.agent.task; do
