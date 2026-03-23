@@ -10,12 +10,12 @@ from .models import AgentTask
 app = typer.Typer()
 
 @app.command()
-def init():
+def init() -> None:
     """Scaffold a new agent.task file"""
     rprint("Scaffolding not yet implemented.")
 
 @app.command()
-def validate(file: str, is_json: bool = typer.Option(False, "--json")):
+def validate(file: str, is_json: bool = typer.Option(False, "--json")) -> None:
     """Validate an agent.task file against the strongly-typed extensible schema."""
     path = Path(file)
     if not path.exists():
